@@ -1,0 +1,27 @@
+local imageButton = script.Parent
+
+
+-- Définir les propriétés de l'animation de dégradé
+local gradient = Instance.new("UIGradient")
+gradient.Rotation = 90
+gradient.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255))
+})
+gradient.Parent = imageButton
+gradient.Enabled =false
+
+
+-- Fonction pour gérer l'état survolé
+local function onHovered()
+	gradient.Enabled = true
+end
+
+-- Fonction pour gérer l'état non survolé
+local function onUnhovered()
+	gradient.Enabled = false
+end
+
+-- Connecter les fonctions aux événements survolé et non survolé
+imageButton.MouseEnter:Connect(onHovered)
+imageButton.MouseLeave:Connect(onUnhovered)
